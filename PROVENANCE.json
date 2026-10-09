@@ -1,0 +1,13 @@
+{
+  "schema_version": "stateaxis-mod-provenance/v1",
+  "source_repository": "Qixin-Gaoke/stateaxis",
+  "source_commit": "7562b5fa6f42e2e045a877b53ac934739e2cf230",
+  "source_issues": [
+    8
+  ],
+  "source_evidence": "docs/history/reports/ISSUE8_CHUNKED_PREFILL_EVIDENCE_AUDIT_20260814.md",
+  "copied_evidence": "evidence/ISSUE8_CHUNKED_PREFILL_EVIDENCE_AUDIT_20260814.md",
+  "copied_evidence_sha256": "736a6013a9774d14cc5cf56a2e05a1faa212d722b4898af9c78d51d49105ea4f",
+  "qualification_inherited": false,
+  "implementation_extracted": false
+}
