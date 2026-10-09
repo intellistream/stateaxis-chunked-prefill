@@ -9,5 +9,9 @@
   "copied_evidence": "evidence/ISSUE8_CHUNKED_PREFILL_EVIDENCE_AUDIT_20260814.md",
   "copied_evidence_sha256": "736a6013a9774d14cc5cf56a2e05a1faa212d722b4898af9c78d51d49105ea4f",
   "qualification_inherited": false,
-  "implementation_extracted": false
+  "implementation_extracted": false,
+  "licensing": {
+    "scaffolding": "Apache-2.0",
+    "copied_evidence": "No additional license grant is inferred from this split."
+  }
 }
