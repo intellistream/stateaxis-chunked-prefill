@@ -18,12 +18,14 @@
   "lifecycle": {
     "status": "experimental",
     "default_enabled": false,
-    "activation_contract": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed.",
-    "rollback_contract": "Disable or forget the descriptor and run the unchanged StateAxis host without this MOD."
+    "activation_contract": "Extension Manager verifies RESEARCH_MANIFEST.json, forwards the hash-bound experimental policy, and StateAxis admits only the matching host contract.",
+    "rollback_contract": "Disable the extension; no stateaxis_chunked_prefill configuration is then supplied and the unmodified scheduler path remains active."
   },
   "scope": {
     "mechanism": "token_budgeted_chunked_prefill",
-    "supported_workloads": [],
+    "supported_workloads": [
+      "mixed long-prefill and decode contention"
+    ],
     "out_of_scope": [
       "general performance claims",
       "automatic inheritance from StateAxis aggregate evidence"
