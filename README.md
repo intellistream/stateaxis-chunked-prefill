@@ -39,7 +39,8 @@ The 256-token budget is an explicit AgentX/agent-research candidate, not a gener
 default recommendation. With Qwen3.5-35B-A3B, the frozen 32-request benchmark corpus
 contains 73–555-token prompts; the earlier 1,024-token candidate could not activate on
 that corpus. The candidate remains default-off while matched real-NPU ON/OFF evidence
-is collected.
+is collected. Its first matched pair is negative: mean TPOT improved 3.46%, but mean
+TTFT regressed 53.75%; see `evidence/agentx-qwen35-256-r1-20261010/`.
 
 ## Validate
 
