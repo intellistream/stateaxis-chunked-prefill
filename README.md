@@ -5,7 +5,7 @@ Extension ID: `org.vllm-hust.stateaxis-chunked-prefill`
 Decode-fair token-budgeted chunked prefill.
 
 This repository is the independent MOD boundary for StateAxis issues [#8](https://github.com/Qixin-Gaoke/stateaxis/issues/8).
-Version `0.2.0.dev0` is an active, default-off experimental policy. Extension Manager
+Version `0.2.1.dev0` is an active, default-off experimental policy. Extension Manager
 binds the immutable `RESEARCH_MANIFEST.json` digest into the launch and StateAxis owns
 the scheduler hook and effect counters. The split does not inherit correctness,
 device, performance, or publication qualification from the aggregate StateAxis
@@ -31,9 +31,15 @@ vllm-hust-ext extension check org.vllm-hust.stateaxis-chunked-prefill
 
 Activation requires `experiment_mode`, the exact research-manifest SHA-256, and a
 StateAxis host containing the declared policy contract. It caps long prefill work at
-1,024 tokens only while decode requests are active and reports applied chunks,
+256 tokens only while decode requests are active and reports applied chunks,
 deferred tokens, and no-contention bypasses. It remains unqualified until it passes
 exactness, lifecycle, release, failure-recovery, and matched real-online gates.
+
+The 256-token budget is an explicit AgentX/agent-research candidate, not a general
+default recommendation. With Qwen3.5-35B-A3B, the frozen 32-request benchmark corpus
+contains 73–555-token prompts; the earlier 1,024-token candidate could not activate on
+that corpus. The candidate remains default-off while matched real-NPU ON/OFF evidence
+is collected.
 
 ## Validate
 
