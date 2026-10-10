@@ -1,10 +1,10 @@
 {
   "schema_version": "stateaxis-research-mod/v1",
   "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
-  "version": "0.2.1.dev0",
+  "version": "0.2.2",
   "mechanism": {
     "name": "contention-aware-prefill-chunk",
-    "chunk_tokens": 256,
+    "chunk_tokens": 384,
     "contention_only": true,
     "inplace_continuation": true
   },
@@ -20,8 +20,14 @@
   },
   "qualification": {
     "performance_qualified": false,
-    "evidence_label": "experimental",
-    "prior_variants": "negative"
+    "evidence_label": "real-online-repeated-workload-scoped-positive-experimental",
+    "scope": "Qwen3.5-35B-A3B AgentX/agent-research, 1 RPS, 256 output tokens, BF16 TP2 eager",
+    "prior_variants": "negative",
+    "blockers": [
+      "peak HBM was not sampled",
+      "end-to-end latency percentiles were not emitted",
+      "strict output-equivalence was not established"
+    ]
   },
   "source": {
     "repository": "Qixin-Gaoke/stateaxis",

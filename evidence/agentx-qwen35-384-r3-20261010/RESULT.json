@@ -1,0 +1,94 @@
+{
+  "schema_version": "stateaxis-mod-on-off/v1",
+  "evidence_label": "real-online-repeated-workload-scoped-positive-experimental",
+  "performance_qualified": false,
+  "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
+  "candidate_version": "0.2.2",
+  "model": "Qwen3.5-35B-A3B",
+  "workload": "agent-research-online",
+  "hardware": "2x Ascend 910B2",
+  "precision": "BF16",
+  "topology": "TP2",
+  "graph_mode": "eager",
+  "requests_per_run": 32,
+  "request_rate": 1.0,
+  "forced_output_tokens": 256,
+  "input_tokens_per_run": 6374,
+  "output_tokens_per_run": 8192,
+  "aggregation": {
+    "method": "primary-metric-median-run",
+    "primary_metric": "output_throughput",
+    "successful_independent_services_per_arm": 3,
+    "on": {
+      "selected_repeat": 2,
+      "output_throughput": 83.712610767661,
+      "mean_ttft_ms": 1382.6155573187862,
+      "median_ttft_ms": 819.3599511869252,
+      "p99_ttft_ms": 5473.082590224221,
+      "mean_tpot_ms": 272.7159259770084,
+      "median_tpot_ms": 276.6722021204437,
+      "p99_tpot_ms": 283.54830874444224,
+      "mean_itl_ms": 271.6505578353008,
+      "p99_itl_ms": 368.68788103573024
+    },
+    "off": {
+      "selected_repeat": 3,
+      "output_throughput": 76.89398461861904,
+      "mean_ttft_ms": 1111.3797840371262,
+      "median_ttft_ms": 801.7068211920559,
+      "p99_ttft_ms": 5720.95177509822,
+      "mean_tpot_ms": 294.94198787108286,
+      "median_tpot_ms": 296.5765782065836,
+      "p99_tpot_ms": 300.84709543446263,
+      "mean_itl_ms": 293.7897850400759,
+      "p99_itl_ms": 404.7216771915555
+    },
+    "relative_change_percent": {
+      "output_throughput": 8.867567707488666,
+      "mean_ttft": 24.405318251910835,
+      "median_ttft": 2.201943344902668,
+      "p99_ttft": -4.332656428828985,
+      "mean_tpot": -7.535740182163996,
+      "median_tpot": -6.7113782910649284,
+      "p99_tpot": -5.750026160311994,
+      "mean_itl": -7.535737568872625,
+      "p99_itl": -8.903352151995158
+    }
+  },
+  "pair_relative_change_percent": [
+    {"pair": 1, "output_throughput": 3.2836499989157497, "mean_ttft": -1.838409442141875, "mean_tpot": -4.960842003131349},
+    {"pair": 2, "output_throughput": 8.290196979000442, "mean_ttft": -55.366194202868456, "mean_tpot": -11.416217869131607},
+    {"pair": 3, "output_throughput": 12.804449713513577, "mean_ttft": -26.67275708296367, "mean_tpot": -15.492049636893036}
+  ],
+  "activation_effects_per_on_run": {
+    "chunks_applied": 6,
+    "tokens_deferred": 822
+  },
+  "raw_sha256": {
+    "on_r1": "0c7b60f8840d5f2f09e23852cbd27aba225bca53c998e7f2d257f0d8ade027f2",
+    "on_r2": "878ac53e40b90265dcbbb8a797b98e88f76d6fc4e24bc663940cb70ad3cb3bec",
+    "on_r3": "1f57bfd238d2a6095d2c78339770705d74278f8d33f50cec03e57164fb1c814d",
+    "off_r1": "4131641fa9732cf671588d9f9073e1d54ca13b6b5f79388d717ea1407d48b1c1",
+    "off_r2": "b24a127282b7e87fd573791e623ad8b8bb8323dc83a145dde4db58ab65e618ae",
+    "off_r3": "96b9cfcc1d7aa4ae5ca339a87db3dd039bb4e3db71ec30537aec1ee79b7a91d0"
+  },
+  "inputs": {
+    "dataset_sha256": "13347797c3660c5b3efbf8912bbcb76d8bba50ffee5f77944b95b9cde1b6ca3c",
+    "on_config_sha256": "30e98a5f0530177bb153eec6f1e6f06e7e83a466d8dc3731088c14ccb5e2b0a8",
+    "off_config_sha256": "9cc72b65f5ec15056b1a0b2d7d89210a85f7b35cb1de948e9b1ce85540032455"
+  },
+  "source_identities": {
+    "stateaxis_host": "729e4b9a311c595869fa70b464ba2c41a9775e21",
+    "ascend_integration": "913841ce6cbeed2e23a29ea40a8d91b158a9ebe0",
+    "extension_manager": "7d98891a2e7546f46de9b84d7549e831a85e3c20",
+    "benchmark": "e0be296bfbb536b5c8341bfbb8a9908fda60228d",
+    "runtime_operator_package_sha256": "a57f29c6991322f8161c7ac5e9ef4bc60b6a7a36d7f33bee01112e63210956b2"
+  },
+  "qualification_blockers": [
+    "peak HBM was not sampled",
+    "end-to-end latency percentiles were not emitted",
+    "campaign arm order was not the predeclared alternating order",
+    "strict output-equivalence was not established"
+  ],
+  "conclusion": "Workload-scoped positive experimental result: all three pairs improved output throughput and mean TPOT, but missing qualification gates prevent a broad or performance-qualified claim."
+}
