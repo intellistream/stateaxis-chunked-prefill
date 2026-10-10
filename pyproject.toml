@@ -17,6 +17,9 @@ test = ["pytest>=8", "ruff>=0.12", "vllm-hust-ext==0.2.0.dev0"]
 [project.entry-points."vllm_hust.extension_bundles"]
 "org.vllm-hust.stateaxis-chunked-prefill" = "stateaxis_chunked_prefill"
 
+[project.entry-points."stateaxis.mod_handlers"]
+chunked_prefill = "stateaxis_chunked_prefill:ChunkedPrefillConfig"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/stateaxis_chunked_prefill"]
 
