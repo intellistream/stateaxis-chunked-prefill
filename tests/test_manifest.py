@@ -2,6 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import pytest
 from vllm_hust_ext.manifest import activation_blocker, load_manifest
 
 import stateaxis_chunked_prefill
@@ -14,7 +15,7 @@ def test_policy_is_discoverable_and_experimentally_activatable() -> None:
         )
     )
     assert manifest.bundle_id == "org.vllm-hust.stateaxis-chunked-prefill"
-    assert manifest.bundle_version == "0.2.2"
+    assert manifest.bundle_version == "0.2.3"
     assert manifest.schema_version == "0.3-experimental"
     assert activation_blocker(manifest) is None
     additional = dict(manifest.activation.additional_config)
@@ -27,9 +28,12 @@ def test_policy_is_discoverable_and_experimentally_activatable() -> None:
     )
     assert additional["stateaxis_mod"]["performance_qualified"] is False
     assert additional["stateaxis_chunked_prefill"] == {
+        "enabled": True,
         "chunk_tokens": 384,
         "contention_only": True,
         "inplace_continuation": True,
+        "paged_append_required": True,
+        "fail_closed": True,
     }
 
 
@@ -39,21 +43,28 @@ def test_research_manifest_matches_package_contract() -> None:
     )
     payload = json.loads(research_manifest.read_text())
     assert payload["mod_id"] == stateaxis_chunked_prefill.MOD_ID
-    assert payload["version"] == "0.2.2"
+    assert payload["version"] == "0.2.3"
     assert payload["mechanism"] == {
         "name": "contention-aware-prefill-chunk",
         "chunk_tokens": 384,
         "contention_only": True,
         "inplace_continuation": True,
+        "paged_append_required": True,
+        "fail_closed": True,
     }
     assert payload["qualification"]["performance_qualified"] is False
     assert (
         payload["qualification"]["evidence_label"]
         == "real-online-repeated-workload-scoped-positive-experimental"
     )
-
     provenance = json.loads((research_manifest.parent / "PROVENANCE.json").read_text())
     assert (
         provenance["implementation_boundary"]["research_manifest_sha256"]
         == hashlib.sha256(research_manifest.read_bytes()).hexdigest()
     )
+
+
+def test_python_contract_fails_closed() -> None:
+    assert stateaxis_chunked_prefill.chunked_prefill().chunk_tokens == 384
+    with pytest.raises(ValueError, match="pinned 384-token"):
+        stateaxis_chunked_prefill.ChunkedPrefillConfig(chunk_tokens=256)

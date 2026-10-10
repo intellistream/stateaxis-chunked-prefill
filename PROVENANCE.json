@@ -13,8 +13,8 @@
   "implementation_boundary": {
     "carrier": "stateaxis_host_builtin",
     "research_manifest": "RESEARCH_MANIFEST.json",
-    "research_manifest_sha256": "ec8da65c5328588143b7d8d2af791450667184fee935f8efb4bf90d7a7b5f5e5",
-    "host_symbol": "vllm.stateaxis_mods:parse_chunked_prefill_experiment",
+    "research_manifest_sha256": "1d021dc4bf7e581fddc853a4d63f91188be6a51544976637f74775b2eec4b3cb",
+    "host_symbol": "statecentric_engine:parse_chunked_prefill_additional_config",
     "performance_qualified": false
   },
   "licensing": {

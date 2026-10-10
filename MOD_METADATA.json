@@ -32,8 +32,8 @@
     ]
   },
   "evidence": {
-    "qualification": "not-beneficial-in-tested-cell",
-    "latest_result": "evidence/agentx-qwen35-256-r1-20261010/RESULT.json",
+    "qualification": "workload-scoped-positive-experimental",
+    "latest_result": "evidence/agentx-qwen35-384-r3-20261010/RESULT.json",
     "index": "EVIDENCE.md",
     "performance_claims": [
       {

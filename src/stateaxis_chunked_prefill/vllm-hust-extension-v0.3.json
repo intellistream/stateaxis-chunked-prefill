@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3-experimental",
   "extension_id": "org.vllm-hust.stateaxis-chunked-prefill",
-  "extension_version": "0.2.2",
+  "extension_version": "0.2.3",
   "kind": "scheduler_policy",
   "host": {
     "provider": "stateaxis",
@@ -24,7 +24,7 @@
   "implementation": [
     {
       "type": "host_builtin",
-      "symbol": "vllm.stateaxis_mods:parse_chunked_prefill_experiment",
+      "symbol": "statecentric_engine:parse_chunked_prefill_additional_config",
       "status": "active"
     }
   ],
@@ -49,7 +49,7 @@
         "device"
       ],
       "isolation": "trusted_in_process",
-      "implementation_ref": "vllm.stateaxis_mods:parse_chunked_prefill_experiment",
+      "implementation_ref": "statecentric_engine:parse_chunked_prefill_additional_config",
       "permissions": []
     }
   ],
@@ -63,14 +63,17 @@
     "environment": {},
     "additional_config": {
       "stateaxis_chunked_prefill": {
+        "enabled": true,
         "chunk_tokens": 384,
         "contention_only": true,
-        "inplace_continuation": true
+        "inplace_continuation": true,
+        "paged_append_required": true,
+        "fail_closed": true
       },
       "stateaxis_mod": {
         "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
-        "version": "0.2.2",
-        "manifest_sha256": "ec8da65c5328588143b7d8d2af791450667184fee935f8efb4bf90d7a7b5f5e5",
+        "version": "0.2.3",
+        "manifest_sha256": "1d021dc4bf7e581fddc853a4d63f91188be6a51544976637f74775b2eec4b3cb",
         "performance_qualified": false
       }
     }

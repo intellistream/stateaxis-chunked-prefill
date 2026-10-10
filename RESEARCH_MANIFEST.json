@@ -1,21 +1,25 @@
 {
   "schema_version": "stateaxis-research-mod/v1",
   "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "mechanism": {
     "name": "contention-aware-prefill-chunk",
     "chunk_tokens": 384,
     "contention_only": true,
-    "inplace_continuation": true
+    "inplace_continuation": true,
+    "paged_append_required": true,
+    "fail_closed": true
   },
   "host_contract": {
     "provider": "stateaxis",
     "api_range": ">=1,<2",
-    "implementation": "vllm.stateaxis_mods:parse_chunked_prefill_experiment",
+    "implementation": "statecentric_engine:parse_chunked_prefill_additional_config",
     "effect_counters": [
-      "chunks_applied",
-      "tokens_deferred",
-      "bypassed_no_contention"
+      "prefill_chunk_batches",
+      "prefill_chunk_items",
+      "prefill_chunk_tokens_deferred",
+      "prefill_chunk_contention_activations",
+      "prefill_chunk_contention_bypasses"
     ]
   },
   "qualification": {

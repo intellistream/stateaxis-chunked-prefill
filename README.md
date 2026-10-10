@@ -5,7 +5,7 @@ Extension ID: `org.vllm-hust.stateaxis-chunked-prefill`
 Decode-fair token-budgeted chunked prefill.
 
 This repository is the independent MOD boundary for StateAxis issue #8.
-Version `0.2.2` is an active, default-off experimental policy. Extension Manager
+Version `0.2.3` is an active, default-off experimental policy. Extension Manager
 binds the immutable `RESEARCH_MANIFEST.json` digest into the launch and StateAxis owns
 the scheduler hook and effect counters. The split does not inherit correctness,
 device, performance, or publication qualification from the aggregate StateAxis
