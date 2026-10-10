@@ -33,9 +33,14 @@
   },
   "evidence": {
     "qualification": "not-beneficial-in-tested-cell",
-    "latest_result": "evidence/ISSUE8_CHUNKED_PREFILL_EVIDENCE_AUDIT_20260814.md",
+    "latest_result": "evidence/agentx-qwen35-256-r1-20261010/RESULT.json",
     "index": "EVIDENCE.md",
     "performance_claims": [
+      {
+        "label": "real-online-single-pair-negative",
+        "scope": "Qwen3.5-35B-A3B BF16 TP2 on 2x Ascend 910B2; AgentX/agent-research 32 requests at 1 RPS",
+        "result": "The 256-token candidate improved mean TPOT by 3.46% but regressed mean TTFT by 53.75%; it is not performance-qualified."
+      },
       {
         "label": "not-beneficial-in-tested-cell",
         "scope": "frozen StateAxis source evidence only",

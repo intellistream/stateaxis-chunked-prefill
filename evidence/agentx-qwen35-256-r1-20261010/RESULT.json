@@ -1,0 +1,30 @@
+{
+  "schema_version": "stateaxis-mod-on-off/v1",
+  "evidence_label": "real-online-single-pair-negative",
+  "performance_qualified": false,
+  "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
+  "mod_commit": "959b14f47ab248560a77b91222ff21766f80f407",
+  "model": "Qwen3.5-35B-A3B",
+  "workload": "agent-research-online",
+  "hardware": "2x Ascend 910B2",
+  "requests": 32,
+  "input_tokens": 6374,
+  "output_tokens": 8192,
+  "on": {
+    "output_throughput": 70.46855815480318,
+    "mean_ttft_ms": 11472.579372668406,
+    "p99_ttft_ms": 23308.20344757289,
+    "mean_tpot_ms": 340.53951751762617,
+    "p99_tpot_ms": 418.430523232356,
+    "chunks_applied": 11,
+    "tokens_deferred": 1704
+  },
+  "off": {
+    "output_throughput": 70.35183121303798,
+    "mean_ttft_ms": 7462.0695522171445,
+    "p99_ttft_ms": 14731.82652384043,
+    "mean_tpot_ms": 352.7564654107361,
+    "p99_tpot_ms": 422.4859414273033
+  },
+  "conclusion": "Negative: decode TPOT improved slightly, but TTFT regressed by more than 50 percent."
+}
