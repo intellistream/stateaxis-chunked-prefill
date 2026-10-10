@@ -1,5 +1,14 @@
-"""stateaxis-chunked-prefill inert contract descriptor."""
+"""Contract constants for the StateAxis contention-aware prefill policy."""
+
+from dataclasses import dataclass
+
+MOD_ID = "org.vllm-hust.stateaxis-chunked-prefill"
 
 
-class StateaxisChunkedPrefillContractProposal:
-    """Metadata-only proposal; this class performs no runtime activation."""
+@dataclass(frozen=True, slots=True)
+class ChunkedPrefillConfig:
+    """Manifest-owned configuration consumed by the StateAxis host."""
+
+    chunk_tokens: int = 1024
+    contention_only: bool = True
+    inplace_continuation: bool = True
