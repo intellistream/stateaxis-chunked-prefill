@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3-experimental",
   "extension_id": "org.vllm-hust.stateaxis-chunked-prefill",
-  "extension_version": "0.2.0.dev0",
+  "extension_version": "0.2.1.dev0",
   "kind": "scheduler_policy",
   "host": {
     "provider": "stateaxis",
@@ -63,14 +63,14 @@
     "environment": {},
     "additional_config": {
       "stateaxis_chunked_prefill": {
-        "chunk_tokens": 1024,
+        "chunk_tokens": 256,
         "contention_only": true,
         "inplace_continuation": true
       },
       "stateaxis_mod": {
         "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
-        "version": "0.2.0",
-        "manifest_sha256": "82dcd4dd07070842054683089c42b97510c579054cc6821627a1bb118c6f6499",
+        "version": "0.2.1",
+        "manifest_sha256": "a754100da77f96fe3adf2e47722e0b8faef0486118fd57255c311392b45df554",
         "performance_qualified": false
       }
     }

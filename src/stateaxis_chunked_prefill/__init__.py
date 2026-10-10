@@ -9,6 +9,6 @@ MOD_ID = "org.vllm-hust.stateaxis-chunked-prefill"
 class ChunkedPrefillConfig:
     """Manifest-owned configuration consumed by the StateAxis host."""
 
-    chunk_tokens: int = 1024
+    chunk_tokens: int = 256
     contention_only: bool = True
     inplace_continuation: bool = True

@@ -1,10 +1,10 @@
 {
   "schema_version": "stateaxis-research-mod/v1",
   "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
-  "version": "0.2.0.dev0",
+  "version": "0.2.1.dev0",
   "mechanism": {
     "name": "contention-aware-prefill-chunk",
-    "chunk_tokens": 1024,
+    "chunk_tokens": 256,
     "contention_only": true,
     "inplace_continuation": true
   },

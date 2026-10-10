@@ -26,7 +26,7 @@ def test_policy_is_discoverable_and_experimentally_activatable() -> None:
     )
     assert additional["stateaxis_mod"]["performance_qualified"] is False
     assert additional["stateaxis_chunked_prefill"] == {
-        "chunk_tokens": 1024,
+        "chunk_tokens": 256,
         "contention_only": True,
         "inplace_continuation": True,
     }
@@ -40,7 +40,7 @@ def test_research_manifest_matches_package_contract() -> None:
     assert payload["mod_id"] == stateaxis_chunked_prefill.MOD_ID
     assert payload["mechanism"] == {
         "name": "contention-aware-prefill-chunk",
-        "chunk_tokens": 1024,
+        "chunk_tokens": 256,
         "contention_only": True,
         "inplace_continuation": True,
     }
