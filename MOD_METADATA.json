@@ -45,6 +45,11 @@
         "label": "not-beneficial-in-tested-cell",
         "scope": "frozen StateAxis source evidence only",
         "result": "The 36-cell exact matrix reduced blocking but repeatedly regressed throughput and cold TTFT."
+      },
+      {
+        "label": "real-online-off-on-off-smoke-positive-but-n40-negative",
+        "scope": "official MMLU-Pro materialization, Qwen3.5-35B-A3B BF16 TP2, vLLM 0.25.1 host port, infinite-rate burst",
+        "result": "The 1280-token candidate improved 8-request throughput by 1.54% and 2.97% versus bracketing OFF arms while improving mean TPOT about 26.8%, but the matched 40-request cell regressed throughput 4.46%, mean TTFT 2.98%, and mean TPOT 2.21%; rejected for burst admission."
       }
     ]
   }

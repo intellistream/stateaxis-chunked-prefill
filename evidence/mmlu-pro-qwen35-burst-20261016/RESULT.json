@@ -1,0 +1,109 @@
+{
+  "schema_version": "stateaxis-mod-on-off/v1",
+  "evidence_label": "real-online-off-on-off-smoke-positive-but-n40-negative",
+  "performance_qualified": false,
+  "mod_id": "org.vllm-hust.stateaxis-chunked-prefill",
+  "date_utc": "2026-10-16",
+  "model": "Qwen3.5-35B-A3B",
+  "workload": "official MMLU-Pro materialization, infinite-rate burst",
+  "hardware": "2x Ascend 910B2",
+  "precision": "BF16",
+  "topology": "TP2",
+  "graph_mode": "FULL_AND_PIECEWISE",
+  "source_identities": {
+    "vllm_parent": "752a3a504485790a2e8491cacbb35c137339ad34",
+    "vllm_host_port": "b3649d5a2b087bbbcc4018b0fa349e9fd35a8d4f",
+    "vllm_ascend": "03766ac696fde5ab1980d80ca0b8543d3580c989",
+    "candidate_1024": "9ddeb6894cb0db8f22c843c45f8a827b0e21941d",
+    "candidate_1280": "1e9367fd2721446baf84c1acbefb736e9dc5dc12",
+    "mmlu_pro_client": "1bfd58a4a20811d5bc5dc81b1ae997d1196b5e33"
+  },
+  "input": {
+    "dataset_sha256": "fb79b6fa98f232282a948e4a17f404f80c03dc2bae05af57b95b9cc0651b3506",
+    "request_rate": "inf",
+    "prefix_caching": false
+  },
+  "smoke_8x32": {
+    "off_before": {
+      "request_throughput": 3.845744407323232,
+      "mean_ttft_ms": 1005.5265985429287,
+      "mean_tpot_ms": 33.99117583889634
+    },
+    "on_1024": {
+      "request_throughput": 3.8652334857332558,
+      "mean_ttft_ms": 1276.9773919135332,
+      "mean_tpot_ms": 25.169630407265593,
+      "chunks_applied": 7,
+      "tokens_deferred": 3315
+    },
+    "on_1280": {
+      "request_throughput": 3.9050928857146188,
+      "mean_ttft_ms": 1265.9701819065958,
+      "mean_tpot_ms": 24.905915875288265,
+      "chunks_applied": 7,
+      "tokens_deferred": 1523
+    },
+    "off_after": {
+      "request_throughput": 3.792332377974695,
+      "mean_ttft_ms": 1031.2879050616175,
+      "mean_tpot_ms": 34.061302325778435
+    },
+    "on_1280_delta_pct_vs_off_before": {
+      "request_throughput": 1.543,
+      "mean_ttft": 25.901,
+      "mean_tpot": -26.728
+    },
+    "on_1280_delta_pct_vs_off_after": {
+      "request_throughput": 2.973,
+      "mean_ttft": 22.756,
+      "mean_tpot": -26.879
+    }
+  },
+  "matched_40x64": {
+    "on_1280": {
+      "completed": 40,
+      "failed": 0,
+      "request_throughput": 2.6385945042626306,
+      "mean_ttft_ms": 6229.225514410064,
+      "mean_tpot_ms": 71.43724961354145,
+      "chunks_applied": 26,
+      "tokens_deferred": 7782
+    },
+    "off_after": {
+      "completed": 40,
+      "failed": 0,
+      "request_throughput": 2.7618133088628114,
+      "mean_ttft_ms": 6049.093024851754,
+      "mean_tpot_ms": 69.89446410037105
+    },
+    "on_delta_pct": {
+      "request_throughput": -4.462,
+      "mean_ttft": 2.978,
+      "mean_tpot": 2.207
+    }
+  },
+  "sha256sums_file_sha256": {
+    "off_8_before": "286e824bdba33b36667d748ad1a45e164acf6ac0ac7b8b0865fa94eae35aa8cf",
+    "on_1024_8": "67f7cc9ae4a0cd01815dd4e7348e5fc2af02c7c4161a270eff3cd631b9af0e4c",
+    "on_1280_8": "97ad6752c34867ee7041dcfd809c55319c0c564731f856580b276e9bfa2263bd",
+    "off_8_after": "51743ec6a6a01c28d1afc055dce2809dbea8f20382ea23ba6e792f780ef53ec1",
+    "on_1280_40": "8422e425a81031cb282e8ef7f5e6583abed7066568ff2862c161962c99914c0c",
+    "off_40_after": "575743716f8df66545af9060fd421374b7570e5ce83ade70109246577a5ad713"
+  },
+  "validation": {
+    "ecpa_manifest_digest_verified": true,
+    "default_off_host_path_verified": true,
+    "all_requests_completed": true,
+    "all_cell_hashes_verified": true,
+    "clean_device_release": true
+  },
+  "conclusion": "Reject 1024/1280 contention-aware chunking for the official infinite-rate MMLU-Pro burst. Preserve the 1-RPS AgentX positive as a separate workload scope and add a burst-backlog no-harm bypass before any broader use.",
+  "raw_evidence_roots": [
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1024-off-r1-runtime0251-smoke-20261016",
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1024-on-r1-runtime0251-smoke-20261016",
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1280-on-r1-runtime0251-smoke-20261016",
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1280-off-r2-runtime0251-smoke-after-20261016",
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1280-on-r2-runtime0251-n40-20261016",
+    "/root/stateaxis-workloads/evidence/dataset-mod-campaign-20261015/mmlu-pro/mmlu-qwen35-chunk1280-off-r3-runtime0251-n40-after-20261016"
+  ]
+}

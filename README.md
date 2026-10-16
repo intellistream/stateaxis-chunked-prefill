@@ -15,6 +15,15 @@ repository.
 
 Status: **workload-scoped positive, experimental and not performance-qualified**.
 
+The later official-client MMLU-Pro burst experiment on the reconstructed
+vLLM 0.25.1 Qwen3.5 host is a retained negative boundary. A 1,024-token
+candidate was neutral on 8 requests but traded mean TTFT for mean TPOT. A
+1,280-token candidate looked positive on the same 8-request smoke, then
+regressed throughput by 4.46%, mean TTFT by 2.98%, and mean TPOT by 2.21% on
+the matched 40-request cell. It is rejected for infinite-rate burst admission;
+the AgentX positive remains scoped to 1 RPS. See
+[`evidence/mmlu-pro-qwen35-burst-20261016/RESULT.json`](evidence/mmlu-pro-qwen35-burst-20261016/RESULT.json).
+
 Earlier 256-token and long-prefill variants were negative. The 384-token policy has
 three independent-service matched ON/OFF pairs on the frozen AgentX/agent-research
 workload. All three pairs improved output throughput (+3.28%, +8.29%, and +12.80%)
